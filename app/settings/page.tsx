@@ -182,7 +182,7 @@ export default function SettingsPage() {
       <Navigation />
 
       <div className="border-b-2 border-black">
-        <div className="max-w-[900px] mx-auto px-4 md:px-6 py-10">
+        <div className="max-w-[900px] mx-auto px-4 md:px-6 py-10 md:py-14">
           <div className="flex items-center gap-4 mb-2">
             <Link
               href={currentUsername ? `/u/${currentUsername}` : "/dashboard"}
@@ -203,7 +203,7 @@ export default function SettingsPage() {
         </div>
       )}
 
-      <div className="max-w-[900px] mx-auto px-4 md:px-6 py-10">
+      <div className="max-w-[900px] mx-auto px-4 md:px-6 py-10 md:py-12">
         <div className="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-10">
           <nav className="flex md:flex-col gap-1">
             {sections.map((s) => (

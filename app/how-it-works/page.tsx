@@ -14,7 +14,7 @@ export default function HowItWorksPage() {
       <Navigation />
 
       <main>
-        <div className="px-4 md:px-6 max-w-[1200px] mx-auto py-16 md:py-24">
+        <div className="px-4 md:px-6 max-w-[1200px] mx-auto py-10 md:py-12">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
             How it works
           </h1>

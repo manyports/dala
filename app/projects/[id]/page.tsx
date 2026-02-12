@@ -122,7 +122,7 @@ export default function PublicProjectPage() {
           creatorName={project.user.name || "Anonymous"}
         />
 
-        <div className="max-w-[1000px] mx-auto px-4 md:px-6 py-12">
+        <div className="max-w-[1000px] mx-auto px-4 md:px-6 py-10 md:py-12">
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-12">
             <div className="space-y-12">
               <div className="space-y-4">

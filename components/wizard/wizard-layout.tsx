@@ -17,7 +17,7 @@ export function WizardLayout({ children, totalSteps }: WizardLayoutProps) {
       <Navigation />
 
       <div className="border-b border-[#e5e5e5]">
-        <div className="max-w-[600px] mx-auto px-6 py-3 flex items-center justify-between">
+        <div className="max-w-[600px] mx-auto px-4 md:px-6 py-3 flex items-center justify-between">
           <p className="text-xs text-[#666] font-mono">Step {currentStep} of {totalSteps}</p>
           <div className="flex-1 ml-4 h-1 bg-[#eee]">
             <div
@@ -28,7 +28,7 @@ export function WizardLayout({ children, totalSteps }: WizardLayoutProps) {
         </div>
       </div>
 
-      <main className="flex-1 flex items-center justify-center px-6 py-12">
+      <main className="flex-1 flex items-center justify-center px-4 md:px-6 py-10 md:py-12">
         <div className="w-full max-w-[600px]">
           <AnimatePresence mode="wait">
             <motion.div
@@ -45,7 +45,7 @@ export function WizardLayout({ children, totalSteps }: WizardLayoutProps) {
       </main>
 
       <footer className="border-t border-black py-4">
-        <div className="max-w-[600px] mx-auto px-6">
+        <div className="max-w-[600px] mx-auto px-4 md:px-6">
           <p className="text-xs text-[#666]">
             You can edit, hide, or delete your project after launch.
           </p>

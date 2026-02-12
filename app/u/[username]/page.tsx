@@ -220,7 +220,7 @@ export default function ProfilePage() {
       <Navigation />
 
       <div className="border-b-2 border-black">
-        <div className="max-w-[900px] mx-auto px-4 md:px-6 py-12 md:py-16">
+        <div className="max-w-[900px] mx-auto px-4 md:px-6 py-10 md:py-14">
           <div className="flex flex-col md:flex-row items-start md:items-center gap-8">
             <div className="w-24 h-24 bg-black text-white flex items-center justify-center text-4xl font-bold shrink-0">
               {initials}

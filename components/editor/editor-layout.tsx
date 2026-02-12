@@ -82,7 +82,7 @@ export function EditorLayout({ projectId, children, saveStatus = "idle", onSave,
         </div>
       </nav>
 
-      <div className="max-w-[1200px] mx-auto px-4 md:px-6 py-12">
+      <div className="max-w-[1200px] mx-auto px-4 md:px-6 py-10 md:py-12">
         <div className={`${checklist && checklist.length > 0 ? "grid grid-cols-1 lg:grid-cols-[1fr_280px] gap-12" : ""}`}>
           <div className="max-w-3xl">
             {children}

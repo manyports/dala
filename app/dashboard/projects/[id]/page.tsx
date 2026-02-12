@@ -181,7 +181,7 @@ export default function ProjectOverviewPage() {
   return (
     <div className="min-h-screen bg-white">
       <header className="border-b-2 border-black">
-        <div className="max-w-[1200px] mx-auto px-4 md:px-6 py-6">
+        <div className="max-w-[1200px] mx-auto px-4 md:px-6 py-10 md:py-14">
           <div className="flex items-center justify-between">
             <Link href="/dashboard" className="text-2xl font-[family-name:var(--font-shippori-mincho)] leading-none hover:opacity-60 transition-opacity flex items-center">
               dala
@@ -193,7 +193,7 @@ export default function ProjectOverviewPage() {
         </div>
       </header>
 
-      <main className="max-w-[1200px] mx-auto px-4 md:px-6 py-12">
+      <main className="max-w-[1200px] mx-auto px-4 md:px-6 py-10 md:py-12">
         <div className="mb-8">
           <Link href="/dashboard" className="text-sm hover:opacity-60 transition-opacity">
             &larr; Back to projects
