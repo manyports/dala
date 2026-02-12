@@ -7,6 +7,7 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Navigation } from "@/app/components"
+import { safeJsonParse } from "@/lib/utils"
 
 export default function SignupPage() {
   const router = useRouter()
@@ -38,8 +39,12 @@ export default function SignupPage() {
           setUsernameStatus("error")
           return
         }
-        const data = await res.json()
-        setUsernameStatus(data.available ? "available" : "taken")
+        const data = await safeJsonParse<{ available: boolean }>(res)
+        if (data) {
+          setUsernameStatus(data.available ? "available" : "taken")
+        } else {
+          setUsernameStatus("error")
+        }
       } catch {
         setUsernameStatus("error")
       }
@@ -63,10 +68,10 @@ export default function SignupPage() {
         body: JSON.stringify({ name, username, email, password }),
       })
 
-      const data = await response.json()
+      const data = await safeJsonParse<{ error?: string }>(response)
 
-      if (!response.ok) {
-        setError(data.error || "Something went wrong")
+      if (!response.ok || !data) {
+        setError(data?.error || "Something went wrong")
         setLoading(false)
         return
       }

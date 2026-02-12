@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { signIn, useSession } from "next-auth/react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
@@ -10,13 +10,25 @@ import { Navigation } from "@/app/components"
 
 export default function LoginPage() {
   const router = useRouter()
-  const { update } = useSession()
+  const { data: session, update, status } = useSession()
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
   const canSubmit = email.includes("@") && password.length >= 1
+
+  useEffect(() => {
+    if (status === "authenticated" && session) {
+      const username = (session.user as Record<string, unknown>)?.username as string | undefined
+      if (username) {
+        router.push(`/u/${username}`)
+      } else {
+        router.push("/dashboard")
+      }
+      router.refresh()
+    }
+  }, [status, session, router])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -37,17 +49,6 @@ export default function LoginPage() {
       }
 
       await update()
-
-      const sessionRes = await fetch("/api/auth/session")
-      const session = await sessionRes.json()
-      const username = session?.user?.username
-
-      if (username) {
-        router.push(`/u/${username}`)
-      } else {
-        router.push("/dashboard")
-      }
-      router.refresh()
     } catch {
       setError("Something went wrong. Try again.")
       setLoading(false)

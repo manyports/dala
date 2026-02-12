@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
+import { safeJsonParse } from "@/lib/utils"
 
 interface Reward {
   id: string
@@ -65,8 +66,8 @@ export function PledgeSidebar({ projectId, currency, rewards, status, creatorId,
           body: JSON.stringify(authForm),
         })
         if (!res.ok) {
-          const data = await res.json()
-          setError(data.error || "Signup failed")
+          const data = await safeJsonParse<{ error?: string }>(res)
+          setError(data?.error || "Signup failed")
           setLoading(false)
           return
         }
@@ -104,8 +105,8 @@ export function PledgeSidebar({ projectId, currency, rewards, status, creatorId,
       })
 
       if (!res.ok) {
-        const data = await res.json()
-        setError(data.error || "Pledge failed")
+        const data = await safeJsonParse<{ error?: string }>(res)
+        setError(data?.error || "Pledge failed")
         setLoading(false)
         return
       }

@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation"
 import { useWizardStore } from "@/lib/store/wizard-store"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
+import { safeJsonParse } from "@/lib/utils"
 
 export function AuthStep() {
   const { data: session, status } = useSession()
@@ -48,10 +49,16 @@ export function AuthStep() {
         }),
       })
 
-      const data = await response.json()
+      const data = await safeJsonParse<{ projectId?: string; error?: string }>(response)
 
-      if (!response.ok) {
-        setError(data.error || "Failed to create project")
+      if (!response.ok || !data) {
+        setError(data?.error || "Failed to create project")
+        setLoading(false)
+        return
+      }
+
+      if (!data.projectId) {
+        setError("Failed to create project")
         setLoading(false)
         return
       }
@@ -76,10 +83,10 @@ export function AuthStep() {
         body: JSON.stringify(formData),
       })
 
-      const data = await response.json()
+      const data = await safeJsonParse<{ error?: string }>(response)
 
-      if (!response.ok) {
-        setError(data.error || "Failed to create account")
+      if (!response.ok || !data) {
+        setError(data?.error || "Failed to create account")
         setLoading(false)
         return
       }

@@ -40,12 +40,15 @@ function generateMockPledge() {
 }
 
 export function LiveFeed() {
-  const [items, setItems] = useState(() =>
-    Array.from({ length: 6 }, generateMockPledge)
-  )
+  const [items, setItems] = useState<ReturnType<typeof generateMockPledge>[]>([])
+  const [mounted, setMounted] = useState(false)
   const intervalRef = useRef<NodeJS.Timeout | null>(null)
 
   useEffect(() => {
+    // Инициализируем данные только на клиенте после монтирования
+    setItems(Array.from({ length: 6 }, generateMockPledge))
+    setMounted(true)
+
     intervalRef.current = setInterval(() => {
       setItems((prev) => {
         const next = [generateMockPledge(), ...prev.slice(0, 5)]
@@ -66,28 +69,30 @@ export function LiveFeed() {
         </div>
 
         <div className="relative h-8 overflow-hidden">
-          <AnimatePresence mode="popLayout">
-            {items.slice(0, 1).map((item) => (
-              <motion.div
-                key={item.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                className="absolute inset-0 flex items-center"
-              >
-                <p className="text-sm md:text-base truncate">
-                  <span className="text-[#999]">Someone from</span>{" "}
-                  <span className="font-bold">{item.city}</span>{" "}
-                  <span className="text-[#999]">pledged</span>{" "}
-                  <span className="font-bold">{item.amount}</span>{" "}
-                  <span className="text-[#999]">to</span>{" "}
-                  <span className="font-bold">{item.project}</span>{" "}
-                  <span className="text-[#666] text-xs ml-2">{item.time}</span>
-                </p>
-              </motion.div>
-            ))}
-          </AnimatePresence>
+          {mounted && items.length > 0 && (
+            <AnimatePresence mode="popLayout">
+              {items.slice(0, 1).map((item) => (
+                <motion.div
+                  key={item.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                  className="absolute inset-0 flex items-center"
+                >
+                  <p className="text-sm md:text-base truncate">
+                    <span className="text-[#999]">Someone from</span>{" "}
+                    <span className="font-bold">{item.city}</span>{" "}
+                    <span className="text-[#999]">pledged</span>{" "}
+                    <span className="font-bold">{item.amount}</span>{" "}
+                    <span className="text-[#999]">to</span>{" "}
+                    <span className="font-bold">{item.project}</span>{" "}
+                    <span className="text-[#666] text-xs ml-2">{item.time}</span>
+                  </p>
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          )}
         </div>
       </div>
     </section>
