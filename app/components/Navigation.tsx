@@ -34,20 +34,20 @@ export function Navigation() {
       >
         <div className="border-b-2 border-black">
           <div className="max-w-[1200px] mx-auto px-4 md:px-6 h-14 flex items-center gap-4">
-            <Link
-              href="/"
-              className="text-xl font-[family-name:var(--font-shippori-mincho)] leading-none hover:opacity-60 transition-opacity shrink-0 flex items-center"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              dala
-            </Link>
+            <div className="flex items-baseline gap-5 flex-1 min-w-0">
+              <Link
+                href="/"
+                className="text-xl font-[family-name:var(--font-shippori-mincho)] hover:opacity-60 transition-opacity shrink-0"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                dala
+              </Link>
 
-            <div className="hidden md:flex items-center gap-5 flex-1 min-w-0">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="text-sm hover:opacity-60 transition-opacity whitespace-nowrap"
+                  className="hidden md:inline text-sm hover:opacity-60 transition-opacity whitespace-nowrap"
                 >
                   {link.label}
                 </Link>
