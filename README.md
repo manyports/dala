@@ -1,36 +1,114 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# DALA
 
-## Getting Started
+Direct crowdfunding platform for CIS creators. No algorithms, no gatekeepers, just transparent funding from people who believe in your work.
 
-First, run the development server:
+## Tech Stack
 
+- **Next.js 15** - React framework
+- **TypeScript** - Type safety
+- **Tailwind CSS** - Styling
+- **Framer Motion** - Animations
+- **shadcn/ui** - UI components
+- **NextAuth v5** - Authentication
+- **Prisma** - Database ORM
+- **MongoDB** - Database
+- **Zustand** - State management
+
+## Quick Start
+
+### 1. Install Dependencies
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Setup Environment
+Create `.env.local`:
+```env
+DATABASE_URL="mongodb://localhost:27017/dala"
+NEXTAUTH_URL="http://localhost:3000"
+NEXTAUTH_SECRET="your-secret-key-change-in-production"
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Generate secure secret:
+```bash
+openssl rand -base64 32
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 3. Setup MongoDB
+```bash
+brew tap mongodb/brew
+brew install mongodb-community
+brew services start mongodb-community
+```
 
-## Learn More
+### 4. Initialize Database
+```bash
+npx prisma generate
+npx prisma db push
+```
 
-To learn more about Next.js, take a look at the following resources:
+### 5. Run Development Server
+```bash
+npm run dev
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Visit [http://localhost:3000](http://localhost:3000)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Features
 
-## Deploy on Vercel
+- Multi-step project creation wizard
+- User authentication and authorization
+- Protected dashboards
+- Swiss design system
+- Fully responsive
+- CIS market localization (KZ, RU, UA, BY)
+- Session persistence
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Project Structure
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```
+app/
+├── (auth)/
+│   ├── login/              # Login/signup page
+│   └── dashboard/          # Protected user dashboard
+├── wizard/                 # Project creation flow
+├── browse/                 # Browse all projects
+├── components/             # Landing page components
+└── api/                    # API routes
+
+components/
+├── ui/                     # shadcn components
+└── wizard/                 # Wizard-specific components
+
+lib/
+├── auth.ts                 # NextAuth config
+├── prisma.ts               # Prisma client
+└── store/                  # Zustand stores
+
+prisma/
+└── schema.prisma           # Database schema
+```
+
+## Development
+
+### Database GUI
+```bash
+npx prisma studio
+```
+
+### Type Check
+```bash
+npm run type-check
+```
+
+### Build
+```bash
+npm run build
+```
+
+## Environment Variables
+
+Required:
+- `DATABASE_URL` - MongoDB connection string
+- `NEXTAUTH_URL` - Application URL
+- `NEXTAUTH_SECRET` - Auth secret key
