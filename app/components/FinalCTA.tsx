@@ -49,12 +49,12 @@ export function FinalCTA() {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 pt-8">
-            <Link href={startHref}>
-              <Button size="lg" className="px-12">
+            <Link href={startHref} className="w-full sm:w-auto">
+              <Button size="lg" className="w-full sm:w-auto">
                 Start your project
               </Button>
             </Link>
-            <Button size="lg" variant="outline" className="px-12">
+            <Button size="lg" variant="outline" className="w-full sm:w-auto">
               Read the guidelines
             </Button>
           </div>

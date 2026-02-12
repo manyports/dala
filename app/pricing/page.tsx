@@ -163,8 +163,8 @@ export default function PricingPage() {
                 <h3 className="text-2xl font-bold mb-2">Ready to start?</h3>
                 <p className="text-[#666]">No credit card needed until your project is approved.</p>
               </div>
-              <Link href={startHref}>
-                <Button size="lg" className="whitespace-nowrap">Start your project</Button>
+              <Link href={startHref} className="w-full md:w-auto">
+                <Button size="lg" className="w-full md:w-auto whitespace-nowrap">Start your project</Button>
               </Link>
             </div>
           </div>

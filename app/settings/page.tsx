@@ -291,7 +291,7 @@ export default function SettingsPage() {
                   </div>
                 </div>
 
-                <Button onClick={handleSaveProfile} disabled={saving} className="h-11">
+                <Button onClick={handleSaveProfile} disabled={saving} className="w-full sm:w-auto h-11">
                   {saving ? "Saving..." : "Save changes"}
                 </Button>
               </div>

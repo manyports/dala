@@ -44,13 +44,13 @@ export function Hero() {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 pt-8">
-            <Link href="/browse">
-              <Button size="lg" className="px-8">
+            <Link href="/browse" className="w-full sm:w-auto">
+              <Button size="lg" className="w-full sm:w-auto">
                 Browse projects
               </Button>
             </Link>
-            <Link href={startHref}>
-              <Button size="lg" variant="outline" className="px-8">
+            <Link href={startHref} className="w-full sm:w-auto">
+              <Button size="lg" variant="outline" className="w-full sm:w-auto">
                 Start your project
               </Button>
             </Link>

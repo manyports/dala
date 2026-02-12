@@ -144,11 +144,11 @@ export default function HowItWorksPage() {
                 89% of funded projects actually ship their product.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link href={startHref}>
-                  <Button size="lg">Start your project</Button>
+                <Link href={startHref} className="w-full sm:w-auto">
+                  <Button size="lg" className="w-full sm:w-auto">Start your project</Button>
                 </Link>
-                <Link href="/browse">
-                  <Button size="lg" variant="outline">Browse projects</Button>
+                <Link href="/browse" className="w-full sm:w-auto">
+                  <Button size="lg" variant="outline" className="w-full sm:w-auto">Browse projects</Button>
                 </Link>
               </div>
             </div>
