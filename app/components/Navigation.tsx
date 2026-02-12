@@ -205,7 +205,7 @@ export function Navigation() {
                   )}
                 </div>
 
-                <div className="border-t-2 border-black p-4 space-y-3">
+                <div className="border-t-2 border-black p-4">
                   {status === "authenticated" ? (
                     <Button
                       variant="outline"
@@ -218,14 +218,14 @@ export function Navigation() {
                       Log out
                     </Button>
                   ) : (
-                    <>
+                    <div className="flex flex-col gap-3">
                       <Link href="/signup" onClick={() => setMobileMenuOpen(false)}>
                         <Button className="w-full">Sign up</Button>
                       </Link>
                       <Link href="/login" onClick={() => setMobileMenuOpen(false)}>
                         <Button variant="outline" className="w-full">Log in</Button>
                       </Link>
-                    </>
+                    </div>
                   )}
                 </div>
               </div>
