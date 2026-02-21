@@ -188,7 +188,10 @@ function getRewardsForProject(title: string, currency: string): Array<{ title: s
     ],
   }
 
-  return (rewards[title] || []).map((r) => ({ ...r, itemIds: [] }))
+  const base = rewards[title] || []
+  return base
+    .map((r) => ({ ...r, itemIds: [] as string[] }))
+    .filter(() => currency.length >= 0)
 }
 
 main()

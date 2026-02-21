@@ -136,7 +136,7 @@ export default function StoryPage() {
         <div>
           <h2 className="text-2xl font-bold mb-1">Tell your story</h2>
           <p className="text-sm text-[#666]">
-            Describe what you're making, why it matters, and how backers can help. Supports Markdown formatting.
+            Describe what you&apos;re making, why it matters, and how backers can help. Supports Markdown formatting.
           </p>
         </div>
 

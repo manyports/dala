@@ -20,7 +20,7 @@ export function Hero() {
         >
           <div className="max-w-3xl">
             <h1 className="text-[clamp(2rem,6vw,5rem)] font-bold leading-[1.1] tracking-tight mb-8">
-              Let's improve your crowdfunding experience!
+              Let&apos;s improve your crowdfunding experience!
             </h1>
             <p className="text-xl md:text-2xl leading-relaxed text-[#666]">
               We at Dala want to make sure the best products get the awareness they deserve.

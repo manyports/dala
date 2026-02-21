@@ -77,7 +77,7 @@ export function CategoryStep() {
     <div className="space-y-12">
       <div>
         <h1 className="text-4xl md:text-5xl font-bold mb-4">
-          First, let's get you set up.
+          First, let&apos;s get you set up.
         </h1>
         <p className="text-xl text-[#666] mb-2">
           Select a primary category and subcategory for your new project.

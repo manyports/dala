@@ -7,7 +7,7 @@ import { WizardLayout } from "@/components/wizard/wizard-layout"
 import { CategoryStep } from "@/components/wizard/steps/category-step"
 import { LocationStep } from "@/components/wizard/steps/location-step"
 import { AuthStep } from "@/components/wizard/steps/auth-step"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useCallback } from "react"
 
 export default function WizardPage() {
   const { data: session, status } = useSession()
@@ -17,15 +17,9 @@ export default function WizardPage() {
 
   const isLoggedIn = status === "authenticated" && !!session
 
-  useEffect(() => {
-    if (isLoggedIn && currentStep === 3 && !creatingProject) {
-      setCreatingProject(true)
-      createProjectAndRedirect()
-    }
-  }, [isLoggedIn, currentStep])
-
-  const createProjectAndRedirect = async () => {
-    const { category, subcategory, country, currency, reset } = useWizardStore.getState()
+  const createProjectAndRedirect = useCallback(async () => {
+    const { category, subcategory, country, currency, reset } =
+      useWizardStore.getState()
 
     try {
       const response = await fetch("/api/projects/create", {
@@ -45,7 +39,17 @@ export default function WizardPage() {
     } catch {
       setCreatingProject(false)
     }
-  }
+  }, [router])
+
+  useEffect(() => {
+    if (isLoggedIn && currentStep === 3 && !creatingProject) {
+      const id = setTimeout(() => {
+        setCreatingProject(true)
+        createProjectAndRedirect()
+      }, 0)
+      return () => clearTimeout(id)
+    }
+  }, [isLoggedIn, currentStep, creatingProject, createProjectAndRedirect])
 
   if (creatingProject) {
     return (

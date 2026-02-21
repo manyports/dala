@@ -20,7 +20,7 @@ export default function PricingPage() {
           </h1>
           <p className="text-xl text-[#666] mb-16 max-w-2xl">
             For creators: $49/month while fundraising. 
-            For backers: free. That's it.
+            For backers: free. That&apos;s it.
           </p>
 
           <div className="grid md:grid-cols-2 gap-8 mb-24">
@@ -46,7 +46,7 @@ export default function PricingPage() {
                 no service charges, no hidden costs.
               </p>
               <div className="border-t border-black pt-4 text-sm text-[#666]">
-                If a project doesn't reach its goal, you get refunded automatically
+                If a project doesn&apos;t reach its goal, you get refunded automatically
               </div>
             </div>
           </div>
@@ -134,7 +134,7 @@ export default function PricingPage() {
               <div>
                 <h3 className="font-bold mb-2">What if I raise $500,000?</h3>
                 <p className="text-[#666]">
-                  Still $49/month. We don't take a percentage, period. 
+                  Still $49/month. We don&apos;t take a percentage, period. 
                   Raise $1K or $1M, same price.
                 </p>
               </div>
@@ -150,8 +150,8 @@ export default function PricingPage() {
               <div>
                 <h3 className="font-bold mb-2">Why so much cheaper?</h3>
                 <p className="text-[#666]">
-                  Because we're not trying to maximize revenue per project. 
-                  We'd rather have more creators keeping more of their money.
+                  Because we&apos;re not trying to maximize revenue per project. 
+                  We&apos;d rather have more creators keeping more of their money.
                 </p>
               </div>
             </div>

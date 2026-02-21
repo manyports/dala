@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useCallback } from "react"
 import { useSession, signIn } from "next-auth/react"
 import { useRouter } from "next/navigation"
 import { useWizardStore } from "@/lib/store/wizard-store"
@@ -22,21 +22,11 @@ export function AuthStep() {
     newsletter: false,
   })
 
-  useEffect(() => {
-    if (status === "authenticated" && session && !projectCreated) {
-      setProjectCreated(true)
-      handleCreateProject()
-    }
-  }, [status, session])
-
-  const handleBack = () => {
-    store.setCurrentStep(2)
-  }
-
-  const handleCreateProject = async () => {
+  const handleCreateProject = useCallback(async () => {
     setLoading(true)
     try {
-      const { category, subcategory, country, currency } = useWizardStore.getState()
+      const { category, subcategory, country, currency } =
+        useWizardStore.getState()
 
       const response = await fetch("/api/projects/create", {
         method: "POST",
@@ -49,7 +39,8 @@ export function AuthStep() {
         }),
       })
 
-      const data = await safeJsonParse<{ projectId?: string; error?: string }>(response)
+      const data =
+        await safeJsonParse<{ projectId?: string; error?: string }>(response)
 
       if (!response.ok || !data) {
         setError(data?.error || "Failed to create project")
@@ -66,9 +57,24 @@ export function AuthStep() {
       store.reset()
       router.push(`/dashboard/projects/${data.projectId}`)
     } catch (err) {
-      setError("Something went wrong")
+      if (err instanceof Error) setError(err.message)
+      else setError("Something went wrong")
       setLoading(false)
     }
+  }, [router, store])
+
+  useEffect(() => {
+    if (status === "authenticated" && session && !projectCreated) {
+      const id = setTimeout(() => {
+        setProjectCreated(true)
+        handleCreateProject()
+      }, 0)
+      return () => clearTimeout(id)
+    }
+  }, [status, session, projectCreated, handleCreateProject])
+
+  const handleBack = () => {
+    store.setCurrentStep(2)
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -103,7 +109,8 @@ export function AuthStep() {
         return
       }
     } catch (err) {
-      setError("Something went wrong")
+      if (err instanceof Error) setError(err.message)
+      else setError("Something went wrong")
       setLoading(false)
     }
   }

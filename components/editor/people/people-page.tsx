@@ -221,7 +221,7 @@ export function PeoplePage({ projectId, vanitySlug, onSlugChange }: PeoplePagePr
               </div>
             ) : collaborators.length === 0 ? (
               <div className="border-2 border-dashed border-[#ccc] p-8 text-center">
-                <p className="text-[#999]">You're the only one here</p>
+                <p className="text-[#999]">You&apos;re the only one here</p>
                 <p className="text-xs text-[#999] mt-1">Invite collaborators to help manage this project.</p>
               </div>
             ) : (

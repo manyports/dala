@@ -42,7 +42,7 @@ export async function GET(req: Request) {
       take: 50,
     })
 
-    let withStats = await Promise.all(
+    const withStats = await Promise.all(
       projects.map(async (p) => {
         const stats = await prisma.pledge.aggregate({
           where: { projectId: p.id },
@@ -65,14 +65,18 @@ export async function GET(req: Request) {
       })
     )
 
-    if (sort === "random") {
-      for (let i = withStats.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1))
-        ;[withStats[i], withStats[j]] = [withStats[j], withStats[i]]
-      }
-    }
-
-    return NextResponse.json({ projects: withStats })
+    const out =
+      sort === "random"
+        ? (() => {
+            const shuffled = [...withStats]
+            for (let i = shuffled.length - 1; i > 0; i--) {
+              const j = Math.floor(Math.random() * (i + 1))
+              ;[shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
+            }
+            return shuffled
+          })()
+        : withStats
+    return NextResponse.json({ projects: out })
   } catch (error) {
     console.error("Browse error:", error)
     return NextResponse.json({ error: "Internal server error" }, { status: 500 })

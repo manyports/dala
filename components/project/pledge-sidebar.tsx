@@ -23,8 +23,9 @@ interface PledgeSidebarProps {
   mobile?: boolean
 }
 
-export function PledgeSidebar({ projectId, currency, rewards, status, creatorId, mobile }: PledgeSidebarProps) {
+export function PledgeSidebar({ projectId, currency, rewards, status: projectStatus, creatorId, mobile }: PledgeSidebarProps) {
   const { data: session, status: authStatus } = useSession()
+  const canPledge = projectStatus === "active"
   const router = useRouter()
   const [open, setOpen] = useState(false)
   const [step, setStep] = useState<"reward" | "amount" | "auth" | "confirm">("reward")
@@ -136,8 +137,8 @@ export function PledgeSidebar({ projectId, currency, rewards, status, creatorId,
     return (
       <Dialog open={open} onOpenChange={handleOpen}>
         <DialogTrigger asChild>
-          <Button size="lg" className="w-full" disabled={isOwner}>
-            {isOwner ? "This is your project" : "Back this project"}
+          <Button size="lg" className="w-full" disabled={isOwner || !canPledge}>
+            {isOwner ? "This is your project" : !canPledge ? "Funding closed" : "Back this project"}
           </Button>
         </DialogTrigger>
         <PledgeDialogContent
@@ -169,8 +170,8 @@ export function PledgeSidebar({ projectId, currency, rewards, status, creatorId,
       <Dialog open={open} onOpenChange={handleOpen}>
         <DialogTrigger asChild>
           <div className="space-y-4">
-            <Button size="lg" className="w-full text-lg h-14" disabled={isOwner}>
-              {isOwner ? "This is your project" : "Back this project"}
+            <Button size="lg" className="w-full text-lg h-14" disabled={isOwner || !canPledge}>
+              {isOwner ? "This is your project" : !canPledge ? "Funding closed" : "Back this project"}
             </Button>
             {!isOwner && (
               <p className="text-xs text-center text-[#999]">
@@ -235,7 +236,7 @@ function PledgeDialogContent({
       <DialogContent>
         <div className="text-center py-8">
           <div className="text-5xl mb-4">&#10003;</div>
-          <h2 className="text-2xl font-bold mb-2">You're a backer</h2>
+          <h2 className="text-2xl font-bold mb-2">You&apos;re a backer</h2>
           <p className="text-[#666]">
             Your {currency}{amount.toLocaleString()} pledge has been recorded. The creator will be notified.
           </p>
@@ -379,7 +380,7 @@ function PledgeDialogContent({
               </Button>
             </div>
             <p className="text-xs text-center text-[#999]">
-              No money is charged yet. You'll be charged when the project is successfully funded.
+              No money is charged yet. You&apos;ll be charged when the project is successfully funded.
             </p>
           </>
         )}

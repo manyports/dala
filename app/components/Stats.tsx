@@ -13,7 +13,7 @@ export function Stats() {
           className="space-y-12"
         >
           <h2 className="text-3xl md:text-4xl font-bold max-w-2xl">
-            Here's how it actually works.
+            Here&apos;s how it actually works.
           </h2>
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -21,7 +21,7 @@ export function Stats() {
               <div className="text-6xl font-bold font-mono">01</div>
               <h3 className="text-xl font-bold">You create your project</h3>
               <p className="text-[#666] leading-relaxed">
-                Tell us what you're making, how much you need, and when you'll deliver. Takes about 15 minutes. We review it in 48 hours.
+                Tell us what you&apos;re making, how much you need, and when you&apos;ll deliver. Takes about 15 minutes. We review it in 48 hours.
               </p>
             </div>
 

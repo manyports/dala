@@ -31,7 +31,7 @@ export function Impact() {
             >
               <div className="text-5xl md:text-6xl font-bold">$68M</div>
               <p className="text-[#666]">
-                Total funded across all projects. That's money that went directly to creators.
+                Total funded across all projects. That&apos;s money that went directly to creators.
               </p>
             </motion.div>
 
@@ -57,7 +57,7 @@ export function Impact() {
             >
               <div className="text-5xl md:text-6xl font-bold">89%</div>
               <p className="text-[#666]">
-                Success rate for projects that launch. Most platforms don't publish this number.
+                Success rate for projects that launch. Most platforms don&apos;t publish this number.
               </p>
             </motion.div>
 
@@ -70,7 +70,7 @@ export function Impact() {
             >
               <div className="text-5xl md:text-6xl font-bold">28</div>
               <p className="text-[#666]">
-                Average days to reach funding goal. Most projects know within a month if they'll make it.
+                Average days to reach funding goal. Most projects know within a month if they&apos;ll make it.
               </p>
             </motion.div>
 
@@ -83,7 +83,7 @@ export function Impact() {
             >
               <div className="text-5xl md:text-6xl font-bold">127K</div>
               <p className="text-[#666]">
-                People who've backed at least one project. That's a real community, not bots.
+                People who&apos;ve backed at least one project. That&apos;s a real community, not bots.
               </p>
             </motion.div>
 

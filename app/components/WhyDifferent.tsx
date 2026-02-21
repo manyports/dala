@@ -17,7 +17,7 @@ export function WhyDifferent() {
               Why is this different from Kickstarter?
             </h2>
             <p className="text-xl text-[#666] max-w-2xl">
-              Good question. Here's the honest answer:
+              Good question. Here&apos;s the honest answer:
             </p>
           </div>
 

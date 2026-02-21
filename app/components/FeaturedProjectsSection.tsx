@@ -5,11 +5,20 @@ import { FeaturedProjects } from "./FeaturedProjects"
 import { featuredProjects } from "../data/projects"
 import type { Project } from "../types"
 
-export function FeaturedProjectsSection() {
+interface FeaturedProjectsSectionProps {
+  initialProjects?: Project[]
+}
+
+export function FeaturedProjectsSection({
+  initialProjects,
+}: FeaturedProjectsSectionProps) {
   const [projects, setProjects] = useState<Project[] | null>(null)
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(initialProjects === undefined)
 
   useEffect(() => {
+    if (initialProjects !== undefined && initialProjects.length > 0) {
+      return
+    }
     fetch("/api/projects/browse?sort=random")
       .then((r) => r.json())
       .then((d) => {
@@ -25,10 +34,14 @@ export function FeaturedProjectsSection() {
       .finally(() => {
         setLoading(false)
       })
-  }, [])
+  }, [initialProjects])
 
   const displayProjects =
-    !loading && projects && projects.length > 0 ? projects : featuredProjects.slice(0, 3)
+    initialProjects !== undefined && initialProjects.length > 0
+      ? initialProjects
+      : !loading && projects && projects.length > 0
+        ? projects
+        : featuredProjects.slice(0, 3)
 
   return <FeaturedProjects projects={displayProjects} />
 }

@@ -23,8 +23,8 @@ export function FinalCTA() {
               Ready to launch your project?
             </h2>
             <p className="text-xl text-[#666] leading-relaxed">
-              It takes about 15 minutes to get started. We'll review your project in 48 hours. 
-              If approved, you'll be live and ready to receive funding.
+              It takes about 15 minutes to get started. We&apos;ll review your project in 48 hours. 
+              If approved, you&apos;ll be live and ready to receive funding.
             </p>
           </div>
 
@@ -33,7 +33,7 @@ export function FinalCTA() {
               <div className="text-sm font-mono uppercase tracking-wider mb-4">Cost</div>
               <div className="text-5xl font-bold mb-4">$49/mo</div>
               <p className="text-[#666]">
-                That's it. No percentage fees. No hidden charges. Cancel anytime. 
+                That&apos;s it. No percentage fees. No hidden charges. Cancel anytime. 
                 Keep 100% of what you raise (minus standard 2.9% payment processing).
               </p>
             </div>

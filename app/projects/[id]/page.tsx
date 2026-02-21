@@ -49,6 +49,12 @@ export default function PublicProjectPage() {
   const projectId = params.id as string
   const [project, setProject] = useState<ProjectData | null>(null)
   const [loading, setLoading] = useState(true)
+  const [now, setNow] = useState(0)
+
+  useEffect(() => {
+    const id = setTimeout(() => setNow(Date.now()), 0)
+    return () => clearTimeout(id)
+  }, [])
 
   useEffect(() => {
     fetch(`/api/projects/${projectId}/public`)
@@ -79,7 +85,7 @@ export default function PublicProjectPage() {
         <div className="flex items-center justify-center py-32">
           <div className="text-center">
             <h1 className="text-4xl font-bold mb-4">Project not found</h1>
-            <p className="text-[#666]">This project doesn't exist or hasn't been published yet.</p>
+            <p className="text-[#666]">This project doesn&apos;t exist or hasn&apos;t been published yet.</p>
           </div>
         </div>
         <Footer />
@@ -93,7 +99,7 @@ export default function PublicProjectPage() {
   const progress = goal > 0 ? Math.min(100, Math.round((project.totalRaised / goal) * 100)) : 0
 
   const daysLeft = project.deadline
-    ? Math.max(0, Math.ceil((new Date(project.deadline).getTime() - Date.now()) / 86400000))
+    ? Math.max(0, Math.ceil((new Date(project.deadline).getTime() - now) / 86400000))
     : project.durationDays || 30
 
   const isOwner = session?.user?.id === project.user.id

@@ -234,7 +234,7 @@ export function PaymentPage({ projectId, country, entityType: initialEntityType,
 
         {step >= 3 ? (
           <div className="border-2 border-black p-6 text-center py-12">
-            <p className="text-2xl font-bold mb-2">You're all set</p>
+            <p className="text-2xl font-bold mb-2">You&apos;re all set</p>
             <p className="text-sm text-[#666]">
               Your payment setup is complete. You can now launch your project.
             </p>

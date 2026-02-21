@@ -19,13 +19,13 @@ export default function HowItWorksPage() {
             How it works
           </h1>
           <p className="text-xl text-[#666] mb-16 max-w-2xl">
-            You create a project. People fund it. You ship it. That's the basics. 
-            Here's what actually happens:
+            You create a project. People fund it. You ship it. That&apos;s the basics. 
+            Here&apos;s what actually happens:
           </p>
 
           <div className="grid md:grid-cols-2 gap-16 mb-24">
             <div>
-              <h2 className="text-2xl font-bold mb-8">If you're creating</h2>
+              <h2 className="text-2xl font-bold mb-8">If you&apos;re creating</h2>
               
               <div className="space-y-8">
                 <div>
@@ -41,7 +41,7 @@ export default function HowItWorksPage() {
                   <div className="text-sm font-mono mb-2">Step 2</div>
                   <h3 className="text-xl font-bold mb-2">We check it</h3>
                   <p className="text-[#666]">
-                    We verify you're a real person, your project is feasible, and you're not scamming anyone. 
+                    We verify you&apos;re a real person, your project is feasible, and you&apos;re not scamming anyone. 
                     Usually done in 24-48 hours.
                   </p>
                 </div>
@@ -67,14 +67,14 @@ export default function HowItWorksPage() {
             </div>
 
             <div>
-              <h2 className="text-2xl font-bold mb-8">If you're backing</h2>
+              <h2 className="text-2xl font-bold mb-8">If you&apos;re backing</h2>
               
               <div className="space-y-8">
                 <div>
                   <div className="text-sm font-mono mb-2">Step 1</div>
                   <h3 className="text-xl font-bold mb-2">Find something cool</h3>
                   <p className="text-[#666]">
-                    Browse projects. Check the creator's history. 
+                    Browse projects. Check the creator&apos;s history. 
                     Read the delivery timeline. Decide if you trust them.
                   </p>
                 </div>
@@ -102,7 +102,7 @@ export default function HowItWorksPage() {
                   <h3 className="text-xl font-bold mb-2">Get your product</h3>
                   <p className="text-[#666]">
                     Product ships to you. You receive it. You rate the experience. 
-                    If something's wrong, support helps.
+                    If something&apos;s wrong, support helps.
                   </p>
                 </div>
               </div>
@@ -133,7 +133,7 @@ export default function HowItWorksPage() {
                 <h3 className="font-bold mb-2">Public accountability</h3>
                 <p className="text-[#666]">
                   All updates, delivery dates, and ratings are public. 
-                  You can see exactly who ships and who doesn't.
+                  You can see exactly who ships and who doesn&apos;t.
                 </p>
               </div>
             </div>

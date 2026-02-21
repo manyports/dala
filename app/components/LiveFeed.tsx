@@ -45,9 +45,10 @@ export function LiveFeed() {
   const intervalRef = useRef<NodeJS.Timeout | null>(null)
 
   useEffect(() => {
-    // Инициализируем данные только на клиенте после монтирования
-    setItems(Array.from({ length: 6 }, generateMockPledge))
-    setMounted(true)
+    const timeoutId = setTimeout(() => {
+      setItems(Array.from({ length: 6 }, generateMockPledge))
+      setMounted(true)
+    }, 0)
 
     intervalRef.current = setInterval(() => {
       setItems((prev) => {
@@ -57,6 +58,7 @@ export function LiveFeed() {
     }, 4000)
 
     return () => {
+      clearTimeout(timeoutId)
       if (intervalRef.current) clearInterval(intervalRef.current)
     }
   }, [])

@@ -84,7 +84,7 @@ export function SearchBar() {
     }
     document.addEventListener("keydown", handleKey)
     return () => document.removeEventListener("keydown", handleKey)
-  }, [])
+  }, [router])
 
   const handleSelect = () => {
     setOpen(false)

@@ -444,7 +444,7 @@ export function BasicsForm({ projectId, initialData, onSaveStatusChange, onDirty
             className="h-12"
           />
           <p className="text-xs text-[#999]">
-            This won't restrict who can back your project.
+            This won&apos;t restrict who can back your project.
           </p>
         </div>
       </section>
@@ -496,7 +496,7 @@ export function BasicsForm({ projectId, initialData, onSaveStatusChange, onDirty
               <div>
                 <p className="font-bold">Keep-What-You-Get</p>
                 <p className="text-xs text-[#666]">
-                  You keep all funds raised, even if the goal isn't met. Higher platform commission applies.
+                  You keep all funds raised, even if the goal isn&apos;t met. Higher platform commission applies.
                 </p>
               </div>
             </label>

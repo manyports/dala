@@ -39,10 +39,10 @@ export function LocationStep({ isLastStep = false }: { isLastStep?: boolean }) {
           Last one—set a location for your project.
         </h1>
         <p className="text-xl text-[#666] mb-2">
-          Pick your country of legal residence if you're raising funds as an individual.
+          Pick your country of legal residence if you&apos;re raising funds as an individual.
         </p>
         <p className="text-sm text-[#999]">
-          If you're raising funds for a business or nonprofit, select the country where the entity's tax ID is registered.
+          If you&apos;re raising funds for a business or nonprofit, select the country where the entity&apos;s tax ID is registered.
         </p>
       </div>
 
