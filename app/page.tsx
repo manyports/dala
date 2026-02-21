@@ -7,12 +7,11 @@ import {
   LiveFeed,
   Stats, 
   WhyDifferent,
-  FeaturedProjects, 
+  FeaturedProjectsSection, 
   Impact,
   FinalCTA,
   Footer 
 } from "./components"
-import { featuredProjects } from "./data/projects"
 
 export default function Home() {
   return (
@@ -40,7 +39,7 @@ export default function Home() {
                 Real creators, real products, real deadlines.
               </p>
             </motion.div>
-            <FeaturedProjects projects={featuredProjects.slice(0, 3)} />
+            <FeaturedProjectsSection />
           </div>
         </section>
 

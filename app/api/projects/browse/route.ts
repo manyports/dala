@@ -28,6 +28,9 @@ export async function GET(req: Request) {
     let orderBy: Prisma.ProjectOrderByWithRelationInput = { createdAt: "desc" }
     if (sort === "ending_soon") orderBy = { deadline: "asc" }
     if (sort === "most_funded") orderBy = { goalAmount: "desc" }
+    if (sort === "random") {
+      orderBy = { createdAt: "desc" }
+    }
 
     const projects = await prisma.project.findMany({
       where: { AND: conditions },
@@ -39,7 +42,7 @@ export async function GET(req: Request) {
       take: 50,
     })
 
-    const withStats = await Promise.all(
+    let withStats = await Promise.all(
       projects.map(async (p) => {
         const stats = await prisma.pledge.aggregate({
           where: { projectId: p.id },
@@ -61,6 +64,13 @@ export async function GET(req: Request) {
         }
       })
     )
+
+    if (sort === "random") {
+      for (let i = withStats.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1))
+        ;[withStats[i], withStats[j]] = [withStats[j], withStats[i]]
+      }
+    }
 
     return NextResponse.json({ projects: withStats })
   } catch (error) {
